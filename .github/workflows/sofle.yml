@@ -10,9 +10,24 @@ on:
     - sofle/**
 
 jobs:
-  sofle:
+  sofle-build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
       build_matrix_path: sofle/sofle.yaml
       config_path: sofle
       archive_name: sofle-firmware
+
+  sofle-store:
+    needs: sofle-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        path: sofle
+    - uses: sylvanld/action-storage@v1
+      with:
+        src: sofle
+        dst: ./
+        storage-branch: main
+    
