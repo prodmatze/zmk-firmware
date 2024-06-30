@@ -18,8 +18,12 @@ jobs:
       archive_name: lily58-firmware
         
   lily58-store:
+    needs: lily58-build
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/download-artifact@v4
+      with:
+        path: lily58
     - uses: sylvanld/action-storage@v1
       with:
         src: lily58
