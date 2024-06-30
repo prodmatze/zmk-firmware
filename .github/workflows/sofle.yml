@@ -1,0 +1,18 @@
+name: "Sofle Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/sofle.yml
+    - sofle/**
+
+jobs:
+  sofle:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: sofle/sofle.yaml
+      config_path: sofle
+      archive_name: sofle-firmware
