@@ -1,0 +1,27 @@
+name: "Corne Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/corne.yml
+
+jobs:
+  corne-nicenano:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: keebd/build-zmk-fw@v1
+        with:
+          shield: corne
+          board: nice_nano_v2
+          local-keymap-path: keymaps/corne
+          output-dir: corne
+      - uses: sylvanld/action-storage@v1
+        with:
+          src: corne
+          dst: ./
+          storage-branch: main
