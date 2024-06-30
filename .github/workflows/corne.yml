@@ -6,7 +6,9 @@ on:
     branches:
     - main
     paths:
-    - config/corne.*
+    - .github/workflows/corne.yml
+    - config/corne*
+    - corne/**
 
 jobs:
   corne:
