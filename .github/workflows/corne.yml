@@ -1,4 +1,4 @@
-name: Corne
+name: "Corne Firmware"
 
 on:
   workflow_dispatch:
