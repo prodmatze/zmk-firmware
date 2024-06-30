@@ -10,16 +10,16 @@ on:
     - lily58/**
 
 jobs:
-  lily58:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-        with:
-          build_matrix_path: lily58/lily58.yaml
-          config_path: lily58
-          archive_name: lily58-firmware
-      - uses: sylvanld/action-storage@v1
-        with:
-          src: lily58
-          dst: ./
-          storage-branch: main
+  lily58-build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: lily58/lily58.yaml
+      config_path: lily58
+      archive_name: lily58-firmware
+        
+  lily58-store:
+    uses: sylvanld/action-storage@v1
+    with:
+      src: lily58
+      dst: ./
+      storage-branch: main
