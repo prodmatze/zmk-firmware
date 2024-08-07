@@ -1,0 +1,11 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: "pull/1946/head:mikoto_7_1_0"
+      import: app/west.yml
+  self:
+    path: config

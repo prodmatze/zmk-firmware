@@ -1,0 +1,32 @@
+name: "Lily58 Mikoto Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/lily58-mikoto.yml
+    - lily58-mikoto/**
+
+jobs:
+  lily58-build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: lily58-mikoto/lily58-mikoto.yaml
+      config_path: lily58-mikoto
+      archive_name: lily58-mikoto-firmware
+        
+  lily58-store:
+    needs: lily58-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        path: lily58-mikoto
+    - uses: sylvanld/action-storage@v1
+      with:
+        src: lily58-mikoto
+        dst: ./
+        storage-branch: main
