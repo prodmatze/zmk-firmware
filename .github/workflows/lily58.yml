@@ -1,4 +1,4 @@
-name: "Lily58 nice!nano Firmware"
+name: "Lily58 Firmware"
 
 on:
   workflow_dispatch:
@@ -6,16 +6,16 @@ on:
     branches:
     - main
     paths:
-    - .github/workflows/lily58-nice_nano.yml
-    - lily58-nice_nano/**
+    - .github/workflows/lily58.yml
+    - lily58/**
 
 jobs:
   lily58-build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
     with:
-      build_matrix_path: lily58-nice_nano/lily58-nice_nano.yaml
-      config_path: lily58-nice_nano
-      archive_name: lily58-nice_nano-firmware
+      build_matrix_path: lily58/lily58.yaml
+      config_path: lily58
+      archive_name: lily58-firmware
         
   lily58-store:
     needs: lily58-build
@@ -27,6 +27,6 @@ jobs:
       run: ls -R
     - uses: sylvanld/action-storage@v1
       with:
-        src: lily58-nice_nano
+        src: lily58
         dst: ./
         storage-branch: main
