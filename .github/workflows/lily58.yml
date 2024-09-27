@@ -23,8 +23,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/download-artifact@v4
-    - name: Display structure of downloaded files
-      run: ls -R
+      with:
+        path: lily58
     - uses: sylvanld/action-storage@v1
       with:
         src: lily58
