@@ -19,6 +19,7 @@ jobs:
         
   lily58-store:
     needs: lily58-build
+    if: always()
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
