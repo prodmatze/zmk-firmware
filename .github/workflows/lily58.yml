@@ -18,14 +18,14 @@ jobs:
       archive_name: lily58-firmware
         
   lily58-store:
-    needs: lily58-build
     if: always()
+    needs: lily58-build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/download-artifact@v4
-      with:
-        path: lily58
+    - name: Display structure of downloaded files
+      run: ls -R
     - uses: sylvanld/action-storage@v1
       with:
         src: lily58
