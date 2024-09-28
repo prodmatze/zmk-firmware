@@ -5,7 +5,7 @@ manifest:
   projects:
     - name: zmk
       remote: medoix
-      revision: "mikoto_7_1_0"
+      revision: mikoto_7_1_0
       import: app/west.yml
   self:
     path: config

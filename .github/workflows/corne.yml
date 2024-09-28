@@ -18,6 +18,7 @@ jobs:
       archive_name: corne-firmware
 
   corne-store:
+    if: always()
     needs: corne-build
     runs-on: ubuntu-latest
     steps:
