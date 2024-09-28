@@ -107,9 +107,3 @@
                 };
         };
 };
-
-/ {
-    chosen {
-        zmk,backlight = &backlight;
-    };
-};
