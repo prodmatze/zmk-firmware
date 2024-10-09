@@ -12,3 +12,7 @@ include:
     shield: sofle_left
   - board: mikoto@7.1
     shield: sofle_right
+  - board: mikoto@7.1
+    shield: sofle_left nice_view_adapter nice_view
+  - board: mikoto@7.1
+    shield: sofle_right nice_view_adapter nice_view
