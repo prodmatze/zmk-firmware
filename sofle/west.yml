@@ -1,11 +1,11 @@
 manifest:
   remotes:
-    - name: medoix
-      url-base: https://github.com/medoix
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
   projects:
     - name: zmk
-      remote: medoix
-      revision: mikoto_7_1_0
+      remote: zmkfirmware
+      revision: main
       import: app/west.yml
   self:
     path: config
