@@ -1,0 +1,35 @@
+name: "Yampad Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/yampad.yml
+    - yampad/**
+
+jobs:
+  yampad-build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: yampad/yampad.yaml
+      config_path: yampad
+      archive_name: yampad-firmware
+
+  yampad-store:
+    if: always()
+    needs: yampad-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        path: yampad
+        merge-multiple: true
+    - uses: sylvanld/action-storage@v1
+      with:
+        src: yampad
+        dst: ./
+        storage-branch: main
+    
